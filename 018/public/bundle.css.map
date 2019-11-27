@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "..\\src\\Shortcut.svelte",
+    "..\\src\\Statistics.svelte",
+    "..\\src\\Info.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\r\n\timport {Complex} from './Complex.js'\r\n\texport let score\r\n\texport let undos\r\n\texport let ready\r\n\texport let stopp\r\n\texport let pair\r\n\t\r\n\tlet a = pair.a\r\n\tlet b = pair.b\r\n\r\n\tconst origa = a.toString()\r\n\tconst origb = b.toString()\r\n\tlet hist = []\r\n\t$: done = a.eq(b)\r\n\t$: bgcolor = done ? 'green' : 'grey'\r\n\tconst op = (action) => {\r\n\t\thist.push(a)\r\n\t\thist = hist\r\n\t\tif (action=='+1') a = a.add()\r\n\t\tif (action=='*2') a = a.mul()\r\n\t\tif (action=='*i') a = a.rot()\r\n\t\tif (action=='m')  a = a.mirror()\r\n\t\tscore += 1\r\n\t\tif (a.eq(b)) ready += 1\r\n\t\tstopp = new Date()\r\n\t}\r\n\tconst undo = () => {\r\n\t\tscore -= 1\r\n\t\tundos += 1\r\n\t\ta = hist.pop()\r\n\t\thist = hist\r\n\t}\r\n</script>\r\n\r\n<style>\r\n\t.w100 {width:200px}\r\n\t.fs {font-size:20px}\r\n\t.marg {margin: 1px}\r\n\t.br {border-radius:5px}\r\n</style>\r\n\r\n<div class=\"w100 fs marg br row left {bgcolor} lighten-1 black-text center-align\" >\r\n\t{#if done}\r\n\t\t<div>{origa}</div>\r\n\t\t<div>{origb}</div>\r\n\t\t{hist.length} steps\r\n\t{:else}\r\n\t\t<div>{a}</div>\r\n\t\t<div>{b}</div>\r\n\t\t<button on:click={() => op('+1')} disabled={done}>+1</button>\r\n\t\t<button on:click={() => op('*2')} disabled={done}>*2</button>\r\n\t\t<button on:click={() => op('*i')} disabled={done}>*i</button>\r\n\t\t<button on:click={() => op('m')}  disabled={done}>m</button>\r\n\t\t<button on:click={undo} disabled={hist.length==0}>Undo</button>\r\n\t{/if}\r\n</div>\r\n",
+    "<script>\r\n\texport let score=0\r\n\texport let undos=0\r\n\texport let ready=0\r\n\texport let start=0\r\n\texport let stopp=0\r\n\texport let optimum = 0\r\n</script>\r\n\r\n<style>\r\n\t.w100 {width:200px}\r\n\t.fs {font-size:20px}\r\n\t.marg {margin: 1px}\r\n\t.br {border-radius:5px}\r\n</style>\r\n\r\n<div class=\"w100 fs marg br row left green center-align\" >\r\n\t<div>Score: {score}</div>\r\n\t<div>Optimum: {optimum}</div>\r\n\t<div>Ready: {ready}</div>\r\n\t<div>Undos: {undos}</div>\r\n\t<div>\tTime: {(stopp - start)/1000}</div>\r\n</div>\r\n",
+    "<style>\r\n\t.w100 {width:200px}\r\n\t.fs {font-size:20px}\r\n\t.marg {margin: 1px}\r\n\t.br {border-radius:5px}\r\n\t.ff {font-family:monospace}\r\n</style>\r\n\r\n<div class=\"w100 fs marg br ff row left yellow black-text\" >\r\n\t<div>p=x+iy info i*i=-1</div>\r\n\t<div>+1 p+1   translate</div>\r\n\t<div>*2 p*2       scale</div>\r\n\t<div>*i p*i      rotate</div>\r\n\t<div>{'m x <=> y  mirror'}</div>\r\n</div>\r\n"
+  ],
+  "names": [],
+  "mappings": "AAoCC,KAAK,cAAC,CAAC,MAAM,KAAK,CAAC,AACnB,GAAG,cAAC,CAAC,UAAU,IAAI,CAAC,AACpB,KAAK,cAAC,CAAC,MAAM,CAAE,GAAG,CAAC,AACnB,GAAG,cAAC,CAAC,cAAc,GAAG,CAAC;AC7BvB,KAAK,cAAC,CAAC,MAAM,KAAK,CAAC,AACnB,GAAG,cAAC,CAAC,UAAU,IAAI,CAAC,AACpB,KAAK,cAAC,CAAC,MAAM,CAAE,GAAG,CAAC,AACnB,GAAG,cAAC,CAAC,cAAc,GAAG,CAAC;ACZvB,KAAK,aAAC,CAAC,MAAM,KAAK,CAAC,AACnB,GAAG,aAAC,CAAC,UAAU,IAAI,CAAC,AACpB,KAAK,aAAC,CAAC,MAAM,CAAE,GAAG,CAAC,AACnB,GAAG,aAAC,CAAC,cAAc,GAAG,CAAC,AACvB,GAAG,aAAC,CAAC,YAAY,SAAS,CAAC"
+}

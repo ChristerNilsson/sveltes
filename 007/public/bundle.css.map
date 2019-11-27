@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "..\\src\\App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\r\n\timport range from 'lodash.range'\r\n\timport shuffle from 'lodash.shuffle'\r\n\r\n\tconst cards = shuffle(range(12).map( (i) => ({state:0, x:100*(i%3), y:100*Math.floor(i/3)})))\r\n\tfor (const i in range(12)) cards[i].value = i%6\r\n\r\n\tconst visible = []\r\n\tconst click = (card) => {\r\n\t\tif (visible.length == 2) {\r\n\t\t\tconst value = (visible[0].value == visible[1].value) ? 2 : 0\r\n\t\t\tvisible.pop().state = value\r\n\t\t\tvisible.pop().state = value\r\n\t\t\tcards = cards\r\n\t\t} \r\n\t\tif (card.state == 2) return\r\n\t\tcard.state = 1\r\n\t\tvisible.push(card)\r\n\t\tcards = cards\r\n\t}\r\n</script>\r\n\r\n<style>\r\n\t.text {\r\n \t\tfill : white;\r\n\t\ttext-anchor : middle;\r\n\t\talignment-baseline : middle;\r\n\t\tfont-size : 80px;\r\n\t}\r\n</style>\r\n\r\n<svg width=300 height=400>\r\n\t{#each cards as card}\r\n\t\t<rect \r\n\t\t\tx=0 \r\n\t\t\ty=0\r\n\t\t\twidth=99 \r\n\t\t\theight=99 \r\n\t\t\tstyle='fill:{['red','black','white'][card.state]}' on:click={()=>click(card)}\r\n\t\t\ttransform='translate({card.x},{card.y})'\r\n\t\t/>\r\n\t\t{#if card.state==1}\r\n\t\t\t<text x=0 y=0 class=text transform='translate({50+card.x},{55+card.y})'>{card.value}</text>\r\n\t\t{/if}\r\n\t{/each}\r\n</svg>\r\n"
+  ],
+  "names": [],
+  "mappings": "AAuBC,KAAK,eAAC,CAAC,AACL,IAAI,CAAG,KAAK,CACb,WAAW,CAAG,MAAM,CACpB,kBAAkB,CAAG,MAAM,CAC3B,SAAS,CAAG,IAAI,AACjB,CAAC"
+}

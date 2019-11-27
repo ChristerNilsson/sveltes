@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "..\\src\\App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\r\n\timport range from 'lodash.range'\r\n\timport shuffle from 'lodash.shuffle'\r\n\r\n\tlet cards = shuffle(range(12).map( (i) => ({state:0, value:i%6})))\r\n\r\n\tconst visible = []\r\n\tconst click = (card) => {\r\n\t\tif (visible.length == 2) {\r\n\t\t\tconst value = (visible[0].value == visible[1].value) ? 2 : 0\r\n\t\t\tvisible.pop().state = value\r\n\t\t\tvisible.pop().state = value\r\n\t\t\tcards = cards\r\n\t\t}\r\n\t\tif (card.state == 2) return\r\n\t\tcard.state = 1\r\n\t\tvisible.push(card)\r\n\t\tcards = cards\r\n\t}\r\n</script>\r\n\r\n<style>\r\n\t.card {\r\n\t\tmargin:1px;\r\n\t\tfont-size:120px;\r\n\t\twidth:33%;\r\n\t\tfloat:left;\r\n\t\ttext-align:center;\r\n\t}\r\n\t.state0 {background-color:red;  color:red;}\r\n\t.state1 {background-color:black;color:white;}\r\n\t.state2 {background-color:white;color:white;}\r\n</style>\r\n\r\n<div style='float:left; width:100%'>\r\n\t{#each cards as card}\r\n\t\t<div class='card {'state'+card.state}' on:click={()=>click(card)}>\r\n\t\t\t{card.state==1 ? card.value : '.'}\r\n\t\t</div>\r\n\t{/each}\r\n</div>\r\n"
+  ],
+  "names": [],
+  "mappings": "AAsBC,KAAK,cAAC,CAAC,AACN,OAAO,GAAG,CACV,UAAU,KAAK,CACf,MAAM,GAAG,CACT,MAAM,IAAI,CACV,WAAW,MAAM,AAClB,CAAC,AACD,OAAO,cAAC,CAAC,iBAAiB,GAAG,CAAG,MAAM,GAAG,AAAC,CAAC,AAC3C,OAAO,cAAC,CAAC,iBAAiB,KAAK,CAAC,MAAM,KAAK,AAAC,CAAC,AAC7C,OAAO,cAAC,CAAC,iBAAiB,KAAK,CAAC,MAAM,KAAK,AAAC,CAAC"
+}

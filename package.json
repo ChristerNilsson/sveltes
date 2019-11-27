@@ -25,6 +25,7 @@
     "lodash.random": "^3.2.0",
     "lodash.range": "^3.2.0",
     "lodash.sample": "^4.2.1",
+    "lodash.samplesize": "^4.2.0",
     "lodash.shuffle": "^4.2.0",
     "nice-try": "^2.0.0",
     "pug": "^2.0.4",

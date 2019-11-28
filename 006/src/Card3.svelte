@@ -1,0 +1,33 @@
+<script>
+	// Uses rotate around Z-axis. In the plane.
+	import { tweened } from 'svelte/motion'
+
+	export let x
+	export let y
+	export let value
+	const progress = tweened(1,{duration:1000})
+	const click = () => progress.set($progress > 0.5 ? 0 : 1)
+$: color = $progress > 0.5 ? 'red' : 'green'
+</script>
+
+<style>
+	.text {
+ 		fill : white;
+		text-anchor : middle;
+		alignment-baseline : middle;
+		font-size : 80px;
+	}
+</style>
+
+<circle 
+	on:click = {()=>click()}
+	r = 49
+	style = 'fill:{color}' 
+	transform = 'translate({x} {y}) rotate({$progress*360})'
+/>
+{#if color=='green'}
+	<text class='text'
+		on:click = {()=>click()}
+		transform = 'translate({x} {7+y}) rotate({$progress*360})'
+	>{value}</text>
+{/if}

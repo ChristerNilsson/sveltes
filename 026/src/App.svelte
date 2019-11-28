@@ -1,7 +1,7 @@
 <script>
 	import Card from './Card.svelte'
 
-	const names = 'angular aurelia backbone ember react vue angular aurelia backbone ember react vue'.split(' ')
+	const names = 'angular svelte backbone ember react vue angular svelte backbone ember react vue'.split(' ')
 	let states = names.map(()=>'HIDDEN')
 	let locked = false
 	let flipped = []

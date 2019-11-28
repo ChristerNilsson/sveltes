@@ -14,7 +14,7 @@
 	$: console.log(variant)
 
 	// const progress = tweened(1,{duration:1000})
-	$: progress = tweened(1, {duration:1000, easing:easing[variant]})
+	$: progress = tweened(1, {duration:2000, easing:easing.elasticInOut})
 
 	const click = () => progress.set($progress > 0.5 ? 0 : 1)
 	$: color = $progress > 0.5 ? 'red' : 'green'

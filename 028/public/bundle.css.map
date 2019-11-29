@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "..\\src\\App.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\r\n\timport P5Canvas from \"./P5Canvas.svelte\"\r\n\r\n\tlet sketch = function(p5) {\r\n\t  let w;\r\n\t  let columns;\r\n\t  let rows;\r\n\t  let board;\r\n\t  let next;\r\n\r\n\t  p5.setup = () => {\r\n\t\t\tp5.createCanvas(600, 600)\r\n\t\t\tp5.angleMode(p5.DEGREES)\r\n\t\t}\r\n\r\n\t  p5.draw = () => {\r\n\t\t\tp5.background(255)\r\n\t\t\tp5.stroke(255,0,0)\r\n\t\t\tp5.strokeWeight(50)\r\n\t\t\tp5.arc(200,200,200,200,60,60+180)\r\n\t  }\r\n\t}\r\n</script>\r\n\r\n<style>\r\n  main {\r\n    font-family: sans-serif;\r\n    text-align: center;\r\n  }\r\n</style>\r\n\r\n<main>\r\n  <P5Canvas sketch={sketch}/>\r\n</main>"
+  ],
+  "names": [],
+  "mappings": "AAyBE,IAAI,eAAC,CAAC,AACJ,WAAW,CAAE,UAAU,CACvB,UAAU,CAAE,MAAM,AACpB,CAAC"
+}

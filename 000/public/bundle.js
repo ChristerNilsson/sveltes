@@ -245,7 +245,7 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			t = text("Hello Ubuntu!");
+    			t = text("Hello Ubuntu!\nHello Ubuntu!");
     		},
 
     		l: function claim(nodes) {

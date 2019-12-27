@@ -1,2 +1,615 @@
-var app=function(){"use strict";function t(){}function e(t){return t()}function n(){return Object.create(null)}function r(t){t.forEach(e)}function s(t){return"function"==typeof t}function i(t,e){return t!=t?e==e:t!==e||t&&"object"==typeof t||"function"==typeof t}let o;function a(t){o=t}const c=[],u=[],l=[],d=[],p=Promise.resolve();let f=!1;function h(t){l.push(t)}function $(){const t=new Set;do{for(;c.length;){const t=c.shift();a(t),b(t.$$)}for(;u.length;)u.pop()();for(let e=0;e<l.length;e+=1){const n=l[e];t.has(n)||(n(),t.add(n))}l.length=0}while(c.length);for(;d.length;)d.pop()();f=!1}function b(t){t.fragment&&(t.update(t.dirty),r(t.before_update),t.fragment.p(t.dirty,t.ctx),t.dirty=null,t.after_update.forEach(h))}const g=new Set;let m;function y(t,e){t&&t.i&&(g.delete(t),t.i(e))}function D(t,n,i){const{fragment:o,on_mount:a,on_destroy:c,after_update:u}=t.$$;o.m(n,i),h(()=>{const n=a.map(e).filter(s);c?c.push(...n):r(n),t.$$.on_mount=[]}),u.forEach(h)}function k(t,e){t.$$.fragment&&(r(t.$$.on_destroy),t.$$.fragment.d(e),t.$$.on_destroy=t.$$.fragment=null,t.$$.ctx={})}function O(t,e){t.$$.dirty||(c.push(t),f||(f=!0,p.then($)),t.$$.dirty=n()),t.$$.dirty[e]=!0}function V(e,s,i,c,u,l){const d=o;a(e);const p=s.props||{},f=e.$$={fragment:null,ctx:null,props:l,update:t,not_equal:u,bound:n(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(d?d.$$.context:[]),callbacks:n(),dirty:null};let h=!1;var b;f.ctx=i?i(e,p,(t,n,r=n)=>(f.ctx&&u(f.ctx[t],f.ctx[t]=r)&&(f.bound[t]&&f.bound[t](r),h&&O(e,t)),n)):p,f.update(),h=!0,r(f.before_update),f.fragment=c(f.ctx),s.target&&(s.hydrate?f.fragment.l((b=s.target,Array.from(b.childNodes))):f.fragment.c(),s.intro&&y(e.$$.fragment),D(e,s.target,s.anchor),$()),a(d)}class x{$destroy(){k(this,1),this.$destroy=t}$on(t,e){const n=this.$$.callbacks[t]||(this.$$.callbacks[t]=[]);return n.push(e),()=>{const t=n.indexOf(e);-1!==t&&n.splice(t,1)}}$set(){}}function N(e){return{c:t,m:t,p:t,i:t,o:t,d:t}}function _(t,e,n){let{script:r,reducers:s,stack:i}=e;const o=chai.assert.deepEqual,a=CodeMirror(document.body,{lineNumbers:!0,tabSize:2,indentWithTabs:!0,theme:"dracula"});a.setValue(r.trim()),a.on("change",()=>{c.setValue(u.run(a.getValue()).join("\n"))});const c=CodeMirror(document.body,{readOnly:!0,tabSize:2}),u=((t,e)=>{let n=[],r=[];const s=(t,s)=>{const o=a(t);if(t=t.trim(),0===o)return n=[JSON.parse(t)];e.length=0;let c=n[o-1];for(const e of t.split(" "))c=i(e,c,s);for(n[o]=c;e.length>=2;)i("==",c,s);1!==e.length||r.push(`Orphan in line ${s+1}`)},i=(n,s,i)=>{if("@"===n)return e.push(s),s;const a=n.slice(1);if(Object.keys(s).includes(a))return e.push(s[a]),s;if(Object.keys(t).includes(n))return t[n](s);if("=="===n){let t,n;try{t=e.pop(),n=e.pop(),o(t,n)}catch(e){r.push("Assert failure in line "+(i+1)),r.push("  Actual "+JSON.stringify(n)),r.push("  Expect "+JSON.stringify(t))}return s}try{if(""==n)return s;e.push(JSON.parse(n))}catch(t){r.push("JSON.parse failure in line "+(i+1)+" "+n),r.push("\t"+n)}return s},a=t=>{let e=0;for(let n=0;n<t.length;n++){if("\t"!==t[n])return e;e++}return e};return{run:t=>{const e=t.split("\n");r=[];for(let t=0;t<e.length;t++){let n=e[t];const i=n.lastIndexOf("#");i>=0&&(n=n.slice(0,i));try{0!=n.trim().length&&s(n,t)}catch(t){r.push(t);break}}return r}}})(s,i);c.setValue(u.run(a.getValue()).join("\n"));const l=()=>{a.setSize(innerWidth,.75*innerHeight),c.setSize(innerWidth,.25*innerHeight)};return l(),window.addEventListener("resize",l),t.$set=(t=>{"script"in t&&n("script",r=t.script),"reducers"in t&&n("reducers",s=t.reducers),"stack"in t&&n("stack",i=t.stack)}),{script:r,reducers:s,stack:i}}class I extends x{constructor(t){super(),V(this,t,_,N,i,["script","reducers","stack"])}}function S(e){var n,r=new I({props:{stack:e.stack,script:e.script,reducers:e.reducers}});return{c(){r.$$.fragment.c()},m(t,e){D(r,t,e),n=!0},p:t,i(t){n||(y(r.$$.fragment,t),n=!0)},o(t){!function(t,e,n,r){if(t&&t.o){if(g.has(t))return;g.add(t),m.c.push(()=>{g.delete(t),r&&(n&&t.d(1),r())}),t.o(e)}}(r.$$.fragment,t),n=!1},d(t){k(r,t)}}}function A(t){const e=[],n=(t,e)=>{if(Math.round(e)!=e)return t;const n=[...t.hist,t.a];return{...t,a:e,hist:n}},r={ADD:t=>n(t,t.a+2),MUL:t=>n(t,2*t.a),DIV:t=>n(t,t.a/2),NEW:t=>({b:e.pop(),a:e.pop(),hist:[]}),UNDO:t=>{const e=t.hist.slice();return{a:e.pop(),b:t.b,hist:e}}};return{stack:e,reducers:r,script:'\n{"a":18,"b":17,"hist":[]}                            # initial state\n\t@ {"a":18,"b":17,"hist":[]} ==                     # assert deep state\n\t@a 18                                              # implicit assert @a == 18\n\tADD @a 20                                          # based on line 1\n\tMUL @a 36 @hist [18]                               # also based on line 1\n\tDIV @ {"a":9,"b":17,"hist":[18]}                   # @ is the state\n\t\tDIV @ {"a":9,"b":17,"hist":[18]}                 # DIV odd is not possible\n\t3 4 NEW @a 3 @b 4 @hist []                         # NEW takes two parameters\n{"a":17,"b":1,"hist":[]}                             # another initial state\n\tMUL ADD DIV @ {"a":18,"b":1,"hist":[17,34,36]}     # based on line 9\n\t\tUNDO @ {"a":36,"b":1,"hist":[17,34]}             # based on line 10\n\t\t\tUNDO @ {"a":34,"b":1,"hist":[17]}              # based on line 11\n\t\t\t\tUNDO @ {"a":17,"b":1,"hist":[]}              # based on line 12\n\tMUL ADD DIV ADD DIV ADD DIV ADD DIV DIV DIV @a @b  # from 17 to 1 in 11 steps\n'}}return new class extends x{constructor(t){super(),V(this,t,A,S,i,[])}}({target:document.body,props:{}})}();
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.head.appendChild(r) })(window.document);
+var app = (function () {
+    'use strict';
+
+    function noop() { }
+    function run(fn) {
+        return fn();
+    }
+    function blank_object() {
+        return Object.create(null);
+    }
+    function run_all(fns) {
+        fns.forEach(run);
+    }
+    function is_function(thing) {
+        return typeof thing === 'function';
+    }
+    function safe_not_equal(a, b) {
+        return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    }
+    function children(element) {
+        return Array.from(element.childNodes);
+    }
+    function custom_event(type, detail) {
+        const e = document.createEvent('CustomEvent');
+        e.initCustomEvent(type, false, false, detail);
+        return e;
+    }
+
+    let current_component;
+    function set_current_component(component) {
+        current_component = component;
+    }
+
+    const dirty_components = [];
+    const binding_callbacks = [];
+    const render_callbacks = [];
+    const flush_callbacks = [];
+    const resolved_promise = Promise.resolve();
+    let update_scheduled = false;
+    function schedule_update() {
+        if (!update_scheduled) {
+            update_scheduled = true;
+            resolved_promise.then(flush);
+        }
+    }
+    function add_render_callback(fn) {
+        render_callbacks.push(fn);
+    }
+    function flush() {
+        const seen_callbacks = new Set();
+        do {
+            // first, call beforeUpdate functions
+            // and update components
+            while (dirty_components.length) {
+                const component = dirty_components.shift();
+                set_current_component(component);
+                update(component.$$);
+            }
+            while (binding_callbacks.length)
+                binding_callbacks.pop()();
+            // then, once components are updated, call
+            // afterUpdate functions. This may cause
+            // subsequent updates...
+            for (let i = 0; i < render_callbacks.length; i += 1) {
+                const callback = render_callbacks[i];
+                if (!seen_callbacks.has(callback)) {
+                    callback();
+                    // ...so guard against infinite loops
+                    seen_callbacks.add(callback);
+                }
+            }
+            render_callbacks.length = 0;
+        } while (dirty_components.length);
+        while (flush_callbacks.length) {
+            flush_callbacks.pop()();
+        }
+        update_scheduled = false;
+    }
+    function update($$) {
+        if ($$.fragment !== null) {
+            $$.update();
+            run_all($$.before_update);
+            const dirty = $$.dirty;
+            $$.dirty = [-1];
+            $$.fragment && $$.fragment.p($$.ctx, dirty);
+            $$.after_update.forEach(add_render_callback);
+        }
+    }
+    const outroing = new Set();
+    let outros;
+    function transition_in(block, local) {
+        if (block && block.i) {
+            outroing.delete(block);
+            block.i(local);
+        }
+    }
+    function transition_out(block, local, detach, callback) {
+        if (block && block.o) {
+            if (outroing.has(block))
+                return;
+            outroing.add(block);
+            outros.c.push(() => {
+                outroing.delete(block);
+                if (callback) {
+                    if (detach)
+                        block.d(1);
+                    callback();
+                }
+            });
+            block.o(local);
+        }
+    }
+
+    const globals = (typeof window !== 'undefined' ? window : global);
+    function create_component(block) {
+        block && block.c();
+    }
+    function mount_component(component, target, anchor) {
+        const { fragment, on_mount, on_destroy, after_update } = component.$$;
+        fragment && fragment.m(target, anchor);
+        // onMount happens before the initial afterUpdate
+        add_render_callback(() => {
+            const new_on_destroy = on_mount.map(run).filter(is_function);
+            if (on_destroy) {
+                on_destroy.push(...new_on_destroy);
+            }
+            else {
+                // Edge case - component was destroyed immediately,
+                // most likely as a result of a binding initialising
+                run_all(new_on_destroy);
+            }
+            component.$$.on_mount = [];
+        });
+        after_update.forEach(add_render_callback);
+    }
+    function destroy_component(component, detaching) {
+        const $$ = component.$$;
+        if ($$.fragment !== null) {
+            run_all($$.on_destroy);
+            $$.fragment && $$.fragment.d(detaching);
+            // TODO null out other refs, including component.$$ (but need to
+            // preserve final state?)
+            $$.on_destroy = $$.fragment = null;
+            $$.ctx = [];
+        }
+    }
+    function make_dirty(component, i) {
+        if (component.$$.dirty[0] === -1) {
+            dirty_components.push(component);
+            schedule_update();
+            component.$$.dirty.fill(0);
+        }
+        component.$$.dirty[(i / 31) | 0] |= (1 << (i % 31));
+    }
+    function init(component, options, instance, create_fragment, not_equal, props, dirty = [-1]) {
+        const parent_component = current_component;
+        set_current_component(component);
+        const prop_values = options.props || {};
+        const $$ = component.$$ = {
+            fragment: null,
+            ctx: null,
+            // state
+            props,
+            update: noop,
+            not_equal,
+            bound: blank_object(),
+            // lifecycle
+            on_mount: [],
+            on_destroy: [],
+            before_update: [],
+            after_update: [],
+            context: new Map(parent_component ? parent_component.$$.context : []),
+            // everything else
+            callbacks: blank_object(),
+            dirty
+        };
+        let ready = false;
+        $$.ctx = instance
+            ? instance(component, prop_values, (i, ret, value = ret) => {
+                if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
+                    if ($$.bound[i])
+                        $$.bound[i](value);
+                    if (ready)
+                        make_dirty(component, i);
+                }
+                return ret;
+            })
+            : [];
+        $$.update();
+        ready = true;
+        run_all($$.before_update);
+        // `false` as a special case of no DOM component
+        $$.fragment = create_fragment ? create_fragment($$.ctx) : false;
+        if (options.target) {
+            if (options.hydrate) {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.l(children(options.target));
+            }
+            else {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.c();
+            }
+            if (options.intro)
+                transition_in(component.$$.fragment);
+            mount_component(component, options.target, options.anchor);
+            flush();
+        }
+        set_current_component(parent_component);
+    }
+    class SvelteComponent {
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    }
+
+    function dispatch_dev(type, detail) {
+        document.dispatchEvent(custom_event(type, detail));
+    }
+    class SvelteComponentDev extends SvelteComponent {
+        constructor(options) {
+            if (!options || (!options.target && !options.$$inline)) {
+                throw new Error(`'target' is a required option`);
+            }
+            super();
+        }
+        $destroy() {
+            super.$destroy();
+            this.$destroy = () => {
+                console.warn(`Component was already destroyed`); // eslint-disable-line no-console
+            };
+        }
+    }
+
+    /* src/TestReducer.svelte generated by Svelte v3.16.7 */
+
+    const { Object: Object_1 } = globals;
+
+    function create_fragment(ctx) {
+    	const block = {
+    		c: noop,
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: noop,
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: noop
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance($$self, $$props, $$invalidate) {
+    	let { script } = $$props;
+    	let { reducers } = $$props;
+    	let { stack } = $$props;
+    	const assert = chai.assert.deepEqual;
+
+    	const testReducer = (reducers, stack) => {
+    		let states = [];
+    		let errors = [];
+
+    		const run = script => {
+    			const arr = script.split("\n");
+    			errors = [];
+
+    			for (let nr = 0; nr < arr.length; nr++) {
+    				let line = arr[nr];
+    				const pos = line.lastIndexOf("#");
+    				if (pos >= 0) line = line.slice(0, pos);
+
+    				try {
+    					if (line.trim().length != 0) runTest(line, nr);
+    				} catch(err) {
+    					errors.push(err);
+    					break;
+    				}
+    			}
+
+    			return errors;
+    		};
+
+    		const runTest = (line, nr) => {
+    			const index = countTabs(line);
+    			line = line.trim();
+    			if (index === 0) return states = [JSON.parse(line)];
+    			stack.length = 0;
+    			let state = states[index - 1];
+
+    			for (const cmd of line.split(" ")) {
+    				state = rpn(cmd, state, nr);
+    			}
+
+    			states[index] = state;
+
+    			while (stack.length >= 2) {
+    				rpn("==", state, nr);
+    			}
+
+    			if (stack.length === 1) {
+    				errors.push(`Orphan in line ${nr + 1}`);
+    				return;
+    			}
+    		};
+
+    		const rpn = (cmd, state, nr) => {
+    			if (cmd === "@") {
+    				stack.push(state);
+    				return state;
+    			}
+
+    			const key = cmd.slice(1);
+
+    			if (Object.keys(state).includes(key)) {
+    				stack.push(state[key]);
+    				return state;
+    			}
+
+    			if (Object.keys(reducers).includes(cmd)) {
+    				return state = reducers[cmd](state);
+    			}
+
+    			if (cmd === "==") {
+    				let x;
+    				let y;
+
+    				try {
+    					x = stack.pop();
+    					y = stack.pop();
+    					assert(x, y);
+    				} catch(error) {
+    					errors.push("Assert failure in line " + (nr + 1));
+    					errors.push("  Actual " + JSON.stringify(y));
+    					errors.push("  Expect " + JSON.stringify(x));
+    				}
+
+    				return state;
+    			}
+
+    			try {
+    				if (cmd == "") return state;
+    				stack.push(JSON.parse(cmd));
+    			} catch(error) {
+    				errors.push("JSON.parse failure in line " + (nr + 1) + " " + cmd);
+    				errors.push("\t" + cmd);
+    			}
+
+    			return state;
+    		};
+
+    		const countTabs = line => {
+    			let result = 0;
+
+    			for (let i = 0; i < line.length; i++) {
+    				const ch = line[i];
+    				if (ch !== "\t") return result;
+    				result++;
+    			}
+
+    			return result;
+    		};
+
+    		return { run };
+    	};
+
+    	const editor = CodeMirror(document.body, {
+    		lineNumbers: true,
+    		tabSize: 2,
+    		indentWithTabs: true,
+    		theme: "dracula"
+    	});
+
+    	editor.setValue(script.trim());
+
+    	editor.on("change", () => {
+    		viewer.setValue(reducer.run(editor.getValue()).join("\n"));
+    	});
+
+    	const viewer = CodeMirror(document.body, { readOnly: true, tabSize: 2 });
+    	const reducer = testReducer(reducers, stack);
+    	viewer.setValue(reducer.run(editor.getValue()).join("\n"));
+
+    	const resize = () => {
+    		editor.setSize(innerWidth, 0.75 * innerHeight);
+    		viewer.setSize(innerWidth, 0.25 * innerHeight);
+    	};
+
+    	resize();
+    	window.addEventListener("resize", resize);
+    	const writable_props = ["script", "reducers", "stack"];
+
+    	Object_1.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<TestReducer> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$set = $$props => {
+    		if ("script" in $$props) $$invalidate(0, script = $$props.script);
+    		if ("reducers" in $$props) $$invalidate(1, reducers = $$props.reducers);
+    		if ("stack" in $$props) $$invalidate(2, stack = $$props.stack);
+    	};
+
+    	$$self.$capture_state = () => {
+    		return { script, reducers, stack };
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ("script" in $$props) $$invalidate(0, script = $$props.script);
+    		if ("reducers" in $$props) $$invalidate(1, reducers = $$props.reducers);
+    		if ("stack" in $$props) $$invalidate(2, stack = $$props.stack);
+    	};
+
+    	return [script, reducers, stack];
+    }
+
+    class TestReducer extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance, create_fragment, safe_not_equal, { script: 0, reducers: 1, stack: 2 });
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "TestReducer",
+    			options,
+    			id: create_fragment.name
+    		});
+
+    		const { ctx } = this.$$;
+    		const props = options.props || ({});
+
+    		if (/*script*/ ctx[0] === undefined && !("script" in props)) {
+    			console.warn("<TestReducer> was created without expected prop 'script'");
+    		}
+
+    		if (/*reducers*/ ctx[1] === undefined && !("reducers" in props)) {
+    			console.warn("<TestReducer> was created without expected prop 'reducers'");
+    		}
+
+    		if (/*stack*/ ctx[2] === undefined && !("stack" in props)) {
+    			console.warn("<TestReducer> was created without expected prop 'stack'");
+    		}
+    	}
+
+    	get script() {
+    		throw new Error("<TestReducer>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set script(value) {
+    		throw new Error("<TestReducer>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get reducers() {
+    		throw new Error("<TestReducer>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set reducers(value) {
+    		throw new Error("<TestReducer>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get stack() {
+    		throw new Error("<TestReducer>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set stack(value) {
+    		throw new Error("<TestReducer>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
+
+    /* src/App.svelte generated by Svelte v3.16.7 */
+
+    function create_fragment$1(ctx) {
+    	let current;
+
+    	const testreducer = new TestReducer({
+    			props: {
+    				stack: /*stack*/ ctx[0],
+    				script: /*script*/ ctx[2],
+    				reducers: /*reducers*/ ctx[1]
+    			},
+    			$$inline: true
+    		});
+
+    	const block = {
+    		c: function create() {
+    			create_component(testreducer.$$.fragment);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			mount_component(testreducer, target, anchor);
+    			current = true;
+    		},
+    		p: noop,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(testreducer.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(testreducer.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			destroy_component(testreducer, detaching);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment$1.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance$1($$self) {
+    	const stack = [];
+
+    	const op = (state, value) => {
+    		if (Math.round(value) != value) return state;
+    		const hist = [...state.hist, state.a];
+    		return { ...state, a: value, hist };
+    	};
+
+    	const reducers = {
+    		ADD: state => op(state, state.a + 2),
+    		MUL: state => op(state, state.a * 2),
+    		DIV: state => op(state, state.a / 2),
+    		NEW: state => ({ b: stack.pop(), a: stack.pop(), hist: [] }),
+    		UNDO: state => {
+    			const hist = state.hist.slice();
+    			const a = hist.pop();
+    			const b = state.b;
+    			return { a, b, hist };
+    		}
+    	};
+
+    	let script = `
+{"a":18,"b":17,"hist":[]}                            # initial state
+	@ {"a":18,"b":17,"hist":[]} ==                     # assert deep state
+	@a 18                                              # implicit assert @a == 18
+	ADD @a 20                                          # based on line 1
+	MUL @a 36 @hist [18]                               # also based on line 1
+	DIV @ {"a":9,"b":17,"hist":[18]}                   # @ is the state
+		DIV @ {"a":9,"b":17,"hist":[18]}                 # DIV odd is not possible
+	3 4 NEW @a 3 @b 4 @hist []                         # NEW takes two parameters
+{"a":17,"b":1,"hist":[]}                             # another initial state
+	MUL ADD DIV @ {"a":18,"b":1,"hist":[17,34,36]}     # based on line 9
+		UNDO @ {"a":36,"b":1,"hist":[17,34]}             # based on line 10
+			UNDO @ {"a":34,"b":1,"hist":[17]}              # based on line 11
+				UNDO @ {"a":17,"b":1,"hist":[]}              # based on line 12
+	MUL ADD DIV ADD DIV ADD DIV ADD DIV DIV DIV @a @b  # from 17 to 1 in 11 steps
+`;
+
+    	$$self.$capture_state = () => {
+    		return {};
+    	};
+
+    	$$self.$inject_state = $$props => {
+    		if ("script" in $$props) $$invalidate(2, script = $$props.script);
+    	};
+
+    	return [stack, reducers, script];
+    }
+
+    class App extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "App",
+    			options,
+    			id: create_fragment$1.name
+    		});
+    	}
+    }
+
+    const app = new App({
+    	target: document.body,
+    	props: {}
+    });
+
+    return app;
+
+}());
 //# sourceMappingURL=bundle.js.map

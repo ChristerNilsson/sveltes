@@ -2,11 +2,11 @@
   "version": 3,
   "file": "bundle.css",
   "sources": [
-    "..\\src\\Card.svelte"
+    "../Card.svelte"
   ],
   "sourcesContent": [
-    "<script>\r\n\r\n\t// The best version! Uses style = transform:rotateY\r\n\t// As <s t y l e> can't handle $progress, style= has to do it.\r\n\r\n\timport { tweened } from 'svelte/motion'\r\n\timport * as easing from 'svelte/easing'\r\n\r\n\texport let x\r\n\texport let y\r\n\texport let value\r\n\r\n\t$: variant = Object.keys(easing)[3] // 0..30 are defined\r\n\t$: console.log(variant)\r\n\r\n\t// const progress = tweened(1,{duration:1000})\r\n\t$: progress = tweened(1, {duration:2000, easing:easing.elasticInOut})\r\n\r\n\tconst click = () => progress.set($progress > 0.5 ? 0 : 1)\r\n\t$: color = $progress > 0.5 ? 'red' : 'green'\r\n</script>\r\n\r\n<style>\r\n\t.text {\r\n \t\tfill : white;\r\n\t\ttext-anchor : middle;\r\n\t\talignment-baseline : middle;\r\n\t\tfont-size : 80px;\r\n\t}\r\n</style>\r\n\r\n<circle \r\n\ton:click = {()=>click()}\r\n\tr = 49\r\n\tstyle = 'fill:{color}; transform:translate({x}px,{y}px) rotateY({$progress*180}deg)'\r\n/>\r\n{#if color=='green'}\r\n\t<text class='text' \r\n\t\ton:click = {()=>click()}\r\n\t\tstyle = 'transform:translate({x}px,{7+y}px) rotateY({$progress*180}deg)'\r\n\t>{value}</text>\r\n{/if}\r\n"
+    "<script>\n\n\t// The best version! Uses style = transform:rotateY\n\t// As <s t y l e> can't handle $progress, style= has to do it.\n\n\timport { tweened } from 'svelte/motion'\n\timport * as easing from 'svelte/easing'\n\n\texport let x\n\texport let y\n\texport let value\n\n\t$: variant = Object.keys(easing)[3] // 0..30 are defined\n\t$: console.log(variant)\n\n\t// const progress = tweened(1,{duration:1000})\n\t$: progress = tweened(1, {duration:2000, easing:easing.elasticInOut})\n\n\tconst click = () => progress.set($progress > 0.5 ? 0 : 1)\n\t$: color = $progress > 0.5 ? 'red' : 'green'\n</script>\n\n<style>\n\t.text {\n \t\tfill : white;\n\t\ttext-anchor : middle;\n\t\talignment-baseline : middle;\n\t\tfont-size : 80px;\n\t}\n</style>\n\n<circle \n\ton:click = {()=>click()}\n\tr = 49\n\tstyle = 'fill:{color}; transform:translate({x}px,{y}px) rotateY({$progress*180}deg)'\n/>\n{#if color=='green'}\n\t<text class='text' \n\t\ton:click = {()=>click()}\n\t\tstyle = 'transform:translate({x}px,{7+y}px) rotateY({$progress*180}deg)'\n\t>{value}</text>\n{/if}\n"
   ],
   "names": [],
-  "mappings": "AAuBC,KAAK,eAAC,CAAC,AACL,IAAI,CAAG,KAAK,CACb,WAAW,CAAG,MAAM,CACpB,kBAAkB,CAAG,MAAM,CAC3B,SAAS,CAAG,IAAI,AACjB,CAAC"
+  "mappings": "AAuBC,KAAK,cAAC,CAAC,AACL,IAAI,CAAG,KAAK,CACb,WAAW,CAAG,MAAM,CACpB,kBAAkB,CAAG,MAAM,CAC3B,SAAS,CAAG,IAAI,AACjB,CAAC"
 }

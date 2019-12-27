@@ -2,13 +2,13 @@
   "version": 3,
   "file": "bundle.css",
   "sources": [
-    "..\\src\\App.svelte",
-    "..\\src\\Button.svelte"
+    "../App.svelte",
+    "../Button.svelte"
   ],
   "sourcesContent": [
-    "<script>\t\r\n\timport store from './store.js'\r\n\timport Button from './Button.svelte'\r\n\t\r\n\tconst ADD = 'ADD'\r\n\tconst MUL = 'MUL'\r\n\tconst DIV = 'DIV'\r\n\tconst NEW = 'NEW'\r\n\tconst UNDO = 'UNDO'\r\n\t\r\n\tstore.op(NEW)\r\n\t\r\n\tconsole.log(store)\r\n\r\n</script> \r\n \r\n<style>\r\n\th1 {\r\n\t\tfont-size: 30px;\r\n\t\ttext-align: center;\r\n\t}\r\n</style>\r\n\r\n<h1 class='col2' style='font-size: 60px; color:red;'>{$store.a}</h1>\r\n<h1 class='col2' style='font-size: 60px; color:green;'>{$store.b}</h1>\r\n<Button klass='col3' title='+2'   click = {() => store.op(ADD)}  disabled = {$store.a==$store.b} />\r\n<Button klass='col3' title='*2'   click = {() => store.op(MUL)}  disabled = {$store.a==$store.b} />\r\n<Button klass='col3' title='/2'   click = {() => store.op(DIV)}  disabled = {$store.a==$store.b} />\r\n<Button klass='col2' title='New'  click = {() => store.op(NEW)}  disabled = {$store.a!=$store.b} />\r\n<Button klass='col2' title='Undo' click = {() => store.op(UNDO)} disabled = {$store.hist.length==0} /> \r\n",
-    "<script>\r\n\texport let click\r\n\texport let disabled\r\n\texport let title\r\n\texport let klass\r\n\r\n\tif (window.innerWidth < 600) klass='col1'\r\n\t\t\r\n</script>\r\n\r\n<style>\r\n\tbutton {\r\n\t\tfont-size: 30px;\r\n\t}\r\n</style>\r\n\r\n<button class={klass} on:click={click} disabled={disabled}>{title}</button>"
+    "<script>\t\n\timport store from './store.js'\n\timport Button from './Button.svelte'\n\t\n\tconst ADD = 'ADD'\n\tconst MUL = 'MUL'\n\tconst DIV = 'DIV'\n\tconst NEW = 'NEW'\n\tconst UNDO = 'UNDO'\n\t\n\tstore.op(NEW)\n\t\n\tconsole.log(store)\n\n</script> \n \n<style>\n\th1 {\n\t\tfont-size: 30px;\n\t\ttext-align: center;\n\t}\n</style>\n\n<h1 class='col2' style='font-size: 60px; color:red;'>{$store.a}</h1>\n<h1 class='col2' style='font-size: 60px; color:green;'>{$store.b}</h1>\n<Button klass='col3' title='+2'   click = {() => store.op(ADD)}  disabled = {$store.a==$store.b} />\n<Button klass='col3' title='*2'   click = {() => store.op(MUL)}  disabled = {$store.a==$store.b} />\n<Button klass='col3' title='/2'   click = {() => store.op(DIV)}  disabled = {$store.a==$store.b} />\n<Button klass='col2' title='New'  click = {() => store.op(NEW)}  disabled = {$store.a!=$store.b} />\n<Button klass='col2' title='Undo' click = {() => store.op(UNDO)} disabled = {$store.hist.length==0} /> \n",
+    "<script>\n\texport let click\n\texport let disabled\n\texport let title\n\texport let klass\n\n\tif (window.innerWidth < 600) klass='col1'\n\t\t\n</script>\n\n<style>\n\tbutton {\n\t\tfont-size: 30px;\n\t}\n</style>\n\n<button class={klass} on:click={click} disabled={disabled}>{title}</button>"
   ],
   "names": [],
-  "mappings": "AAiBC,EAAE,cAAC,CAAC,AACH,SAAS,CAAE,IAAI,CACf,UAAU,CAAE,MAAM,AACnB,CAAC;ACTD,MAAM,cAAC,CAAC,AACP,SAAS,CAAE,IAAI,AAChB,CAAC"
+  "mappings": "AAiBC,EAAE,eAAC,CAAC,AACH,SAAS,CAAE,IAAI,CACf,UAAU,CAAE,MAAM,AACnB,CAAC;ACTD,MAAM,eAAC,CAAC,AACP,SAAS,CAAE,IAAI,AAChB,CAAC"
 }
